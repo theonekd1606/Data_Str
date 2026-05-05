@@ -1,0 +1,16 @@
+class Solution {
+public:
+    TreeNode* pruneTree(TreeNode* root) {
+        if (root == NULL) return NULL;
+
+        root->left = pruneTree(root->left);
+        root->right = pruneTree(root->right);
+
+        // If current node is 0 and both children are NULL → remove it
+        if (root->val == 0 && root->left == NULL && root->right == NULL) {
+            return NULL;
+        }
+
+        return root;
+    }
+};
